@@ -17,13 +17,17 @@ describe("Application", () => {
     })
     expect(sectionHeading).toBeInTheDocument()
 
-    const paragraphElement = screen.getByText("All fields are mandatory")
+    //# with Regex
+    const paragraphElement = screen.getByText(/mandatory/i)
     expect(paragraphElement).toBeInTheDocument()
 
     const closeElement = screen.getByTitle("close")
     expect(closeElement).toBeInTheDocument()
 
-    const imageElement = screen.getByAltText("a person with a laptop")
+    //# with Function
+    const imageElement = screen.getByAltText((content) =>
+      content.startsWith("a person")
+    )
     expect(imageElement).toBeInTheDocument()
 
     const customElement = screen.getByTestId("custom-element")
