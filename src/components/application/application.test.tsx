@@ -1,19 +1,19 @@
-import { render, screen } from "@testing-library/react"
-import { Application } from "./application"
+import { render, screen } from '@testing-library/react'
+import { Application } from './application'
 
-describe("Application", () => {
-  test("renders correctly", () => {
+describe('Application', () => {
+  test('renders correctly', () => {
     render(<Application />)
 
-    const pageHeading = screen.getByRole("heading", {
+    const pageHeading = screen.getByRole('heading', {
       level: 1,
-      name: "Job application form",
+      name: 'Job application form',
     })
     expect(pageHeading).toBeInTheDocument()
 
-    const sectionHeading = screen.getByRole("heading", {
+    const sectionHeading = screen.getByRole('heading', {
       level: 2,
-      name: "Section 1",
+      name: 'Section 1',
     })
     expect(sectionHeading).toBeInTheDocument()
 
@@ -21,16 +21,16 @@ describe("Application", () => {
     const paragraphElement = screen.getByText(/mandatory/i)
     expect(paragraphElement).toBeInTheDocument()
 
-    const closeElement = screen.getByTitle("close")
+    const closeElement = screen.getByTitle('close')
     expect(closeElement).toBeInTheDocument()
 
     //# with Function
     const imageElement = screen.getByAltText((content) =>
-      content.startsWith("a person")
+      content.startsWith('a person')
     )
     expect(imageElement).toBeInTheDocument()
 
-    const customElement = screen.getByTestId("custom-element")
+    const customElement = screen.getByTestId('custom-element')
     expect(customElement).toBeInTheDocument()
 
     //# by Role
@@ -40,23 +40,23 @@ describe("Application", () => {
     // expect(nameElement).toBeInTheDocument()
 
     //# by LabelText with Selector
-    const nameElement2 = screen.getByLabelText("Name", {
-      selector: "input",
+    const nameElement2 = screen.getByLabelText('Name', {
+      selector: 'input',
     })
     expect(nameElement2).toBeInTheDocument()
 
-    const nameElement3 = screen.getByPlaceholderText("Fullname")
+    const nameElement3 = screen.getByPlaceholderText('Fullname')
     expect(nameElement3).toBeInTheDocument()
 
-    const nameElement4 = screen.getByDisplayValue("Bagus")
+    const nameElement4 = screen.getByDisplayValue('Bagus')
     expect(nameElement4).toBeInTheDocument()
 
-    const bioElement = screen.getByRole("textbox", {
-      name: "Bio",
+    const bioElement = screen.getByRole('textbox', {
+      name: 'Bio',
     })
     expect(bioElement).toBeInTheDocument()
 
-    const jobLocationElement = screen.getByRole("combobox")
+    const jobLocationElement = screen.getByRole('combobox')
     expect(jobLocationElement).toBeInTheDocument()
 
     //# by Role
@@ -65,11 +65,11 @@ describe("Application", () => {
 
     //# by LabelText
     const termsElement2 = screen.getByLabelText(
-      "I agree to the terms and conditions"
+      'I agree to the terms and conditions'
     )
     expect(termsElement2).toBeInTheDocument()
 
-    const submitButtonElement = screen.getByRole("button")
+    const submitButtonElement = screen.getByRole('button')
     expect(submitButtonElement).toBeInTheDocument()
     expect(submitButtonElement).toBeDisabled()
   })

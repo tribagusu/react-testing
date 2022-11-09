@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
 export const Users = () => {
   const [users, setUsers] = useState<string[]>([])
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
       .then((data) => setUsers(data.map((user: { name: string }) => user.name)))
-      .catch(() => setError("error fetching users"))
+      .catch(() => setError('error fetching users'))
   }, [])
 
   return (
